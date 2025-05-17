@@ -15,7 +15,7 @@ const GlobalStyle = css`
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background-color: ${theme.colors['bg-white']};
+    background-color: ${theme.colors['text-sub3']};
     font-size: 62.5%;
     font-family: 'Pretendard', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -24,6 +24,7 @@ const GlobalStyle = css`
 
   #root {
     width: 375px;
+    background-color: ${theme.colors['bg-white']};
   }
 `;
 
