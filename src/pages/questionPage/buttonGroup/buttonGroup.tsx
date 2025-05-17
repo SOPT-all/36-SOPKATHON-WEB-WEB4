@@ -4,8 +4,12 @@ import * as styles from './buttonGroup.css';
 import { getQuestions } from '@/apis/questions';
 import { Option } from '@/types/question';
 
-const ButtonGroup = () => {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+interface ButtonGroupProps {
+  selectedId: number | null;
+  setSelectedId: (id: number) => void;
+}
+
+const ButtonGroup = ({ selectedId, setSelectedId }: ButtonGroupProps) => {
   const [options, setOptions] = useState<Option[]>([]);
 
   useEffect(() => {
