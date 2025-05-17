@@ -155,4 +155,9 @@
 | CHORE     | 기타 설정, 빌드 작업 등      |
 
 ### 웹 4조 
+- before
 ![image](https://github.com/user-attachments/assets/d0b9fa99-c975-43b2-a65b-27a58659c3f5)
+- after
+![IMG_3263](https://github.com/user-attachments/assets/3cf40a1a-b4cc-4a5d-935e-a78bb34bd9af)
+
+
