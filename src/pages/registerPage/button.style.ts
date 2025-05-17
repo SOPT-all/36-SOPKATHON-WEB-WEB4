@@ -1,29 +1,26 @@
 import { css } from '@emotion/react';
+import theme from '@styles/theme';
 
 export const ButtonDisabled = css`
-  width: 339px;
-  height: 58px;
-  background: #E8E8E8;
-  border-radius: 8px;
+  width: 100%;
+  height: 5.8rem;
+  background: ${theme.colors['bg-gray1']};
+  border-radius: 0.8rem;
   border: none;
   text-align: center;
-  color: #6E6E6E;
-  font-size: 18px;
-  font-family: 'Pretendard Variable';
-  font-weight: 600;
+  color: ${theme.colors['text-sub2']};
+  ${theme.fonts['title2-sb-18']}
   cursor: not-allowed;
 `;
 
 export const ButtonEnabled = css`
-  width: 339px;
-  height: 58px;
+  width: 100%;
+  height: 5.8rem;
   background: #7556FF;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: none;
   text-align: center;
-  color: white;
-  font-size: 18px;
-  font-family: 'Pretendard Variable';
-  font-weight: 600;
+  color: ${theme.colors['text-white']};
+  ${theme.fonts['title2-sb-18']}
   cursor: pointer;
 `; 

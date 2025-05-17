@@ -1,47 +1,41 @@
 import { css } from '@emotion/react';
+import theme from '@styles/theme';
 
 export const InputContainer = css`
-  width: 339px;
+  width: 100%;
+  display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
-  gap: 8px;
-  display: inline-flex;
+  gap: 0.8rem;
 `;
 
 export const InputLabel = css`
-  align-self: stretch;
-  color: #AFAFAF;
-  font-size: 14px;
-  font-family: 'Pretendard Variable';
-  font-weight: 400;
+  color: ${theme.colors['text-sub3']};
+  ${theme.fonts['body2-r-14']}
   word-wrap: break-word;
 `;
 
 export const InputWrapper = css`
-  align-self: stretch;
-  height: 57px;
-  position: relative;
-  background: white;
+  width: 100%;
+  height: 5.7rem;
+  background: ${theme.colors['bg-white']};
   overflow: hidden;
-  border-radius: 8px;
-  outline: 1px #E8E8E8 solid;
-  outline-offset: -1px;
+  border-radius: 0.8rem;
+  outline: 0.1rem ${theme.colors['bg-gray1']} solid;
+  outline-offset: -0.1rem;
 `;
 
 export const Input = css`
   width: 100%;
   height: 100%;
-  padding: 0 16px;
-  color: #020202;
-  font-size: 14px;
-  font-family: 'Pretendard Variable';
-  font-weight: 400;
+  padding: 0 1.6rem;
+  color: ${theme.colors['text-primary']};
+  ${theme.fonts['body2-r-14']}
   border: none;
   outline: none;
 
   &::placeholder {
-    color: #AFAFAF;
+    color: ${theme.colors['text-sub3']};
     text-align: center;
   }
 `; 
