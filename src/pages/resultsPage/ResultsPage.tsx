@@ -61,9 +61,8 @@ const ResultsPage = () => {
   if (error) return <p css={S.errorText}>에러: {error}</p>;
   if (!result) return <p css={S.errorText}>결과를 불러올 수 없습니다.</p>;
   
-  // TODO: API에서 partnerNames가 제공되면 아래 더미 데이터를 제거하고 result.partnerNames를 사용
-  // 현재는 임시 파트너 이름 배열을 사용합니다
-  const partnerNames = ['강민서', '김동욱', '김민주', '김범수', '김시연', '김윤', '김지현', '김혜수', '류효정', '박서진', '박준하', '서희수', '안현주', '유예지', '이가현'];
+  // API 응답의 userNames 배열을 사용하고, 없는 경우 빈 배열을 사용합니다
+  const partnerNames = result.userNames || [];
   
   const handleOpenModal = () => {
     setIsModalOpen(true);
