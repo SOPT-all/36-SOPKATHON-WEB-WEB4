@@ -3,13 +3,28 @@ import theme from '@styles/theme';
 
 export const Wrapper = css`
   display: flex;
-  flex-direction : column;
-  padding-top : 8.5rem;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 4px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background-color: ${theme.colors['bg-gray2']};
+`;
+
+export const topSection = css`
+  padding-top: 8.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const bottomSection = css`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
 `;
 
 export const title = css`
@@ -64,4 +79,5 @@ export const resultBox = css`
   border-radius: 8px;
   border: 1px solid ${theme.colors['color-sub1']};
   background: ${theme.colors['bg-white']};
+  margin-bottom: 2rem;
 `;
