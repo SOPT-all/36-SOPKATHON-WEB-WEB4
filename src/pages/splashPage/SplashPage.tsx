@@ -1,8 +1,28 @@
 import * as S from './splashPage.style';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SplashPage = () => {
+  const navigate = useNavigate();
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    const animationTimer = setTimeout(() => {
+      setIsFading(true);
+    }, 1000);
+
+    const navigationTimer = setTimeout(() => {
+      navigate('/intro');
+    }, 2000);
+
+    return () => {
+      clearTimeout(animationTimer);
+      clearTimeout(navigationTimer);
+    };
+  }, [navigate]);
+
   return (
-    <div css={S.Wrapper}>
+    <div css={[S.Wrapper, S.fadeAnimation(isFading)]}>
       <div css={S.ContentContainer}>
         <img 
           src="/svgs/logo-text-white.svg" 

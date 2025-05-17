@@ -1,4 +1,13 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const Wrapper = css`
   width: 100%;
@@ -6,6 +15,8 @@ export const Wrapper = css`
   position: relative;
   overflow: hidden;
   padding: 0 1.8rem;
+  opacity: 0;
+  animation: ${fadeIn} 1s ease-in forwards;
 `;
 
 export const ContentWrapper = css`

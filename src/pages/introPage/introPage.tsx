@@ -3,12 +3,19 @@ import * as S from './introPage.style';
 import TitleContainer from '@components/titleContainer/TitleContainer';
 import CharacterGroup from '@assets/svgs/CharacterGroup';
 import Button from '@components/button/Button';
+import { useEffect, useState } from 'react';
 
 const IntroPage = () => {
   const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트된 후 즉시 화면에 표시
+    setIsVisible(true);
+  }, []);
 
   const handleStartButtonClick = () => {
-    navigate('/question');
+    navigate('/register');
   };
 
   return (
