@@ -79,30 +79,6 @@ export const Input = css`
   }
 `;
 
-export const ButtonDisabled = css`
-  width: 100%;
-  height: 5.8rem;
-  background: ${theme.colors['bg-gray1']};
-  border-radius: 0.8rem;
-  border: none;
-  text-align: center;
-  color: ${theme.colors['text-sub2']};
-  ${theme.fonts['title2-sb-18']}
-  cursor: not-allowed;
-`;
-
-export const ButtonEnabled = css`
-  width: 100%;
-  height: 5.8rem;
-  background: #7556FF;
-  border-radius: 0.8rem;
-  border: none;
-  text-align: center;
-  color: ${theme.colors['text-white']};
-  ${theme.fonts['title2-sb-18']}
-  cursor: pointer;
-`;
-
 export const ButtonContainer = css`
   width: 100%;
   height: 5.8rem;
