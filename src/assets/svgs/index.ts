@@ -1,2 +1,1 @@
-// @ts-nocheck
-export { default as ReactLogo } from './ReactLogo';
+export { default as BackIcon } from './BackIcon';
