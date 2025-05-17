@@ -17,6 +17,7 @@ export const topSection = css`
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+  margin-bottom: 2.4rem;
 `;
 
 export const bottomSection = css`
@@ -25,7 +26,7 @@ export const bottomSection = css`
   flex-direction: column;
   align-items: center;
   margin-bottom: 2.4rem;
-  margin-top: 2.8rem;
+  margin-top: 2.4rem;
 `;
 
 export const title = css`
@@ -50,7 +51,7 @@ export const infoContainer = css`
 `;
 
 export const location = css`
-  margin-bottom : 0.3rem;
+  margin-bottom : 0.5rem;
   color: ${theme.colors['text-sub2']};
   ${theme.fonts['body1-sb-16']};
 `;
@@ -62,6 +63,7 @@ export const drink = css`
 `;
 
 export const content = css`
+  margin-bottom : 1.6rem;
   width : 26.7rem;
   text-align : center;
   color: ${theme.colors['text-sub1']};
