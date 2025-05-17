@@ -9,10 +9,18 @@ export const TitleContainer = css`
   gap: 1.6rem;
 `;
 
+export const CenterAlign = css`
+  align-items: center;
+`;
+
 export const Title = css`
   color: ${theme.colors['text-primary']};
   ${theme.fonts['head-b-24']}
   word-wrap: break-word;
+`;
+
+export const CenterText = css`
+  text-align: center;
 `;
 
 export const SubTitle = css`

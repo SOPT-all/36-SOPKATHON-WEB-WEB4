@@ -15,8 +15,9 @@ const IntroPage = () => {
     <div css={S.Wrapper}>
       <div css={S.ContentWrapper}>
         <TitleContainer 
-          title="경상남도 술과 음식의 미각 여행"
-          subTitle="당신의 취향에 맞는 경상남도 전통주를 찾아보세요"
+          title="환영합니다!"
+          subTitle="마실지도를 한번 거닐어 볼까요?"
+          align="center"
         />
 
         <div css={S.CharacterContainer}>

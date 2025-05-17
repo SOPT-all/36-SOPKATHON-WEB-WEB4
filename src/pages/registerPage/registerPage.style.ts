@@ -5,7 +5,7 @@ export const Wrapper = css`
   height: 100%;
   position: relative;
   overflow: hidden;
-  padding: 0 1.6rem;
+  padding: 0 1.8rem;
 `;
 
 export const TitleContainer = css`
@@ -13,7 +13,7 @@ export const TitleContainer = css`
   top: 12.5rem;
   left: 0;
   right: 0;
-  padding: 0 1.6rem;
+  padding: 0 1.8rem;
 `;
 
 export const InputFieldContainer = css`
@@ -33,5 +33,5 @@ export const ButtonContainer = css`
   bottom: 9.6rem;
   left: 0;
   right: 0;
-  padding: 0 1.6rem;
+  padding: 0 1.8rem;
 `;
