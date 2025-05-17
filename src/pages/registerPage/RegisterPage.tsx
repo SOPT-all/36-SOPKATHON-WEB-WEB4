@@ -3,11 +3,13 @@ import * as S from './registerPage.style';
 import InputField from './InputField';
 import Button from '@components/button/Button';
 import TitleContainer from '@components/titleContainer/TitleContainer';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const [hasInputError, setHasInputError] = useState(false);
+  const navigate = useNavigate();
 
   const handleNameChange = (value: string) => {
     setName(value);
@@ -19,7 +21,8 @@ const RegisterPage = () => {
 
   const handleButtonClick = () => {
     console.log('이름 제출:', name);
-    // 여기에 제출 로직 추가
+    // 사용자 정보 저장 후 파트 선택 페이지로 이동
+    navigate('/part');
   };
 
   useEffect(() => {
