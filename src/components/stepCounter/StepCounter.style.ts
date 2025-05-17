@@ -6,4 +6,6 @@ export const stepCounterStyle = css`
   ${theme.fonts['body2-sb-14']};
   width: 12rem;
   text-align: center;
+  align-self: center;
+  margin-bottom: 2rem;
 `;
