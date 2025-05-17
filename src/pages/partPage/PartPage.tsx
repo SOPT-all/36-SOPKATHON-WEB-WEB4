@@ -11,7 +11,12 @@ const PartPage = () => {
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
   const handleSelectPart = (value: string) => {
+    if (part === value) {
+    setPart('');
+    setIsButtonEnabled(false)
+  } else {
     setPart(value);
+  }
   };
 
   const handleButtonClick = () => {
@@ -40,8 +45,9 @@ const PartPage = () => {
           </div>
         ))}
       </div>
-      <Button onClick={handleButtonClick} disabled={!isButtonEnabled}/>
-    </div>
+      <div css={S.ButtonContainer}>
+      <Button text={"다음"} isEnabled={isButtonEnabled} onClick={handleButtonClick}/>
+    </div></div>
   );
 };
 

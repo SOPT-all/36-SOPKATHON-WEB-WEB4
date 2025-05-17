@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import theme from '@styles/theme';
 
 export const Wrapper = css`
-  border : 1px solid black;
+width: 100%;
 `;
 
 export const TitleContainer = css`
@@ -46,7 +46,9 @@ align-items:center;
   background-color: ${theme.colors['bg-gray2']};
   ${theme.fonts['body1-sb-16']}  
     color: ${theme.colors['text-sub2']};
-    cursor: pointer
+    cursor: pointer;
+    border-radius: 0.8rem;
+
 `;
 
 export const SelectedGrid = css`
@@ -58,13 +60,23 @@ align-items:center;
   background-color: ${theme.colors['color-sub2']};
   ${theme.fonts['body1-sb-16']}  
     color: ${theme.colors['color-primary']};
-    cursor: pointer
+    cursor: pointer;
+    border-radius: 0.8rem;
+
 `;
 
 export const ButtonContainer = css`
 display:flex;
-    width: 34rem;
+width: 100%;
+
   height: 5.8rem;
-  padding-top: 6.4rem;
+  padding : 0 1.8rem; 
+  margin-top: 6.4rem;
+  margin-bottom : 9.6rem;
   cursor: pointer;
+`;
+
+export const EnabledBtn = css`
+ background-color: ${theme.colors['color-primary']};
+ color: ${theme.colors['text-white']};
 `;
