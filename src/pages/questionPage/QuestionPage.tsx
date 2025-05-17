@@ -19,13 +19,13 @@ import { useUserContext } from '../../contexts/UserContext';
 const QuestionPage = () => {
   const navigate = useNavigate();
   const { isVisible, isLeaving, navigateWithFade, triggerFadeTransition } = usePageTransition();
-  const { name, token } = useUserContext();
+  const { name, token, setSelectedOptions } = useUserContext();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [totalSteps, setTotalSteps] = useState<number>(4); // 전체 단계 수 설정(Step1~Step4)
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
+  const [selectedOptions, setSelectedOptionsLocal] = useState<number[]>([]);
   const isLastStep = currentStep === totalSteps;
   const buttonLabel = isLastStep ? '결과 보기' : '다음';
   const isButtonEnabled = selectedId !== null;
@@ -57,16 +57,20 @@ const QuestionPage = () => {
     // 현재 선택된 옵션 저장
     const updatedOptions = [...selectedOptions];
     updatedOptions[currentStep - 1] = selectedId;
-    setSelectedOptions(updatedOptions);
+    setSelectedOptionsLocal(updatedOptions);
     
     if (isLastStep) {
+      // 마지막 질문 완료 시 모든 선택한 옵션을 UserContext에 저장
+      const finalOptions = [...updatedOptions];
+      setSelectedOptions(finalOptions);
+      
       console.log('✅ 선택 완료 정보:');
       console.log('이름:', name);
       console.log('토큰:', token);
-      console.log('선택한 옵션들:', updatedOptions);
+      console.log('선택한 옵션들:', finalOptions);
       console.log('파트:', localStorage.getItem('selectedPart') || '선택된 파트 없음');
       
-      navigateWithFade('/results');
+      navigateWithFade('/result');
     } else {
       // 다음 질문으로 넘어갈 때 페이드 트랜지션 적용
       triggerFadeTransition(() => {
