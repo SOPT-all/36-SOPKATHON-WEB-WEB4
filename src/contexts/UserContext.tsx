@@ -4,7 +4,9 @@ interface UserContextTypes {
   name: string;
   token: string;
   isExistingUser: boolean;
+  selectedOptions: number[];
   setUserInfo: (name: string, token: string, isExistingUser: boolean) => void;
+  setSelectedOptions: (options: number[]) => void;
   clearUserInfo: () => void;
 }
 
@@ -12,7 +14,9 @@ const initialContext: UserContextTypes = {
   name: '',
   token: '',
   isExistingUser: false,
+  selectedOptions: [],
   setUserInfo: () => {},
+  setSelectedOptions: () => {},
   clearUserInfo: () => {},
 };
 
@@ -28,6 +32,7 @@ export const UserProvider = ({ children }: UserProviderPropTypes) => {
   const [name, setName] = useState('');
   const [token, setToken] = useState('');
   const [isExistingUser, setIsExistingUser] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
 
   const setUserInfo = (name: string, token: string, isExistingUser: boolean) => {
     setName(name);
@@ -39,6 +44,7 @@ export const UserProvider = ({ children }: UserProviderPropTypes) => {
     setName('');
     setToken('');
     setIsExistingUser(false);
+    setSelectedOptions([]);
   };
 
   return (
@@ -47,7 +53,9 @@ export const UserProvider = ({ children }: UserProviderPropTypes) => {
         name,
         token,
         isExistingUser,
+        selectedOptions,
         setUserInfo,
+        setSelectedOptions,
         clearUserInfo,
       }}
     >
