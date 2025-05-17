@@ -12,8 +12,4 @@ export const buttonStyle = (selected: boolean) => css`
   background-color: ${selected ?  theme.colors['color-sub2'] :  theme.colors['bg-white']};
   cursor: pointer;
   transition: background-color 0.2s;
-
-  &:hover {
-    background-color: ${selected ?  theme.colors['bg-gray1'] :  theme.colors['bg-white']};
-  }
 `

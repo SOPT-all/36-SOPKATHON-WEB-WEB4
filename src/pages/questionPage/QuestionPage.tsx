@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import ButtonGroup from '@pages/questionPage/buttonGroup/buttonGroup';
 import * as styles from './questionPage.style';
 import { getQuestions } from '@/apis/questions';
-import { Question } from '@/types/question';
+import { Question, Option } from '@/types/question';
 import Button from '@components/button/Button';
 import StepCounter from '@components/stepCounter/StepCounter';
 import { useNavigate } from 'react-router-dom';
@@ -17,24 +17,34 @@ import Step4 from '@assets/svgs/Step4';
 const QuestionPage = () => {
   const navigate = useNavigate();
   const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
-  const [question, setQuestion] = useState<Question | null>(null);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState<number>(1);
-  const [totalSteps, setTotalSteps] = useState<number>(5); // 전체 단계 수 설정
+  const [totalSteps, setTotalSteps] = useState<number>(4); // 전체 단계 수 설정(Step1~Step4)
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const isLastStep = currentStep === totalSteps;
   const buttonLabel = isLastStep ? '결과 보기' : '다음';
   const isButtonEnabled = selectedId !== null;
 
+  // 현재 단계에 해당하는 질문
+  const currentQuestion = questions.length > 0 && currentStep <= questions.length
+    ? questions[currentStep - 1] 
+    : null;
+
   useEffect(() => {
-    const fetch = async () => {
+    const fetchQuestions = async () => {
       try {
+        setLoading(true);
         const data = await getQuestions();
-        setQuestion(data[0]);
+        setQuestions(data);
       } catch (error) {
-        console.error(error);
+        console.error('질문을 불러오는 중 오류 발생:', error);
+      } finally {
+        setLoading(false);
       }
     };
-    fetch();
+    
+    fetchQuestions();
   }, []);
 
   const handleClick = (): void => {
@@ -72,6 +82,10 @@ const QuestionPage = () => {
     }
   };
 
+  if (loading) {
+    return <div css={styles.Wrapper(isVisible, isLeaving)}>질문을 불러오는 중...</div>;
+  }
+
   return (
     <div css={styles.Wrapper(isVisible, isLeaving)}>
       <Back previousPath={getPreviousPath()} />
@@ -81,12 +95,16 @@ const QuestionPage = () => {
 
         <div css={styles.questionContainer}>
          {renderStepImage()}
-          <h1 css={styles.testText}>{question?.title ?? ''}</h1>
+          <h1 css={styles.testText}>{currentQuestion?.title ?? ''}</h1>
         </div>
       </div>
 
       <div css={styles.buttonGroupContainer}>
-        <ButtonGroup selectedId={selectedId} setSelectedId={setSelectedId} />
+        <ButtonGroup 
+          selectedId={selectedId} 
+          setSelectedId={setSelectedId}
+          options={currentQuestion?.options || []}
+        />
       </div>
 
       <div css={styles.ButtonContainer}>
