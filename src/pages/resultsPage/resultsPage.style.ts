@@ -74,3 +74,10 @@ export const img = css`
   width: 20rem;
   height: 20rem;
 `
+
+export const errorText = css`
+  color: ${theme.colors['system-error']};
+  ${theme.fonts['body1-sb-16']};
+  text-align: center;
+  padding-top: 20rem;
+`;
