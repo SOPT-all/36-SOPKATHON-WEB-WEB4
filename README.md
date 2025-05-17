@@ -43,7 +43,7 @@
 |엄경호</br>[@maehwasoo](https://github.com/maehwasoo)|박소이</br>[@soyyyyy](https://github.com/soyyyyy)|정희연</br>[@heeyyeon](https://github.com/heeyyeon)|조성하</br>[@earl9rey](https://github.com/earl9rey)|
 |:---:|:---:|:---:|:---:|
 |<img src = "https://avatars.githubusercontent.com/u/63665123?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/90364636?v=4" width ="250">|<img src = "https://github.com/user-attachments/assets/069a27d6-ac46-411e-8dfd-bd01d8ce2cab" width ="250">|<img src = "https://avatars.githubusercontent.com/u/129039817?v=4" width ="250">|
-|`분담1`|`분담2`|`분담3`|`분담24`|
+|`UI 구현/API 연동`|`UI 구현/API 연동`|`UI 구현/API 연동`|`UI 구현/API 연동`|
 
 <br/>
 
