@@ -15,7 +15,7 @@ const IntroPage = () => {
   }, []);
 
   const handleStartButtonClick = () => {
-    navigate('/question');
+    navigate('/register');
   };
 
   return (
