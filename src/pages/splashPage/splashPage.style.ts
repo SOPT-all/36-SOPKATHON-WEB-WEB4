@@ -1,5 +1,14 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 import theme from '../../styles/theme';
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
 
 export const Wrapper = css`
   width: 100%;
@@ -30,4 +39,10 @@ export const Title = css`
   line-height: 1.25;
   word-break: keep-all;
   max-width: 16.5rem;
+`;
+
+export const fadeAnimation = (isFading: boolean) => css`
+  opacity: ${isFading ? 0 : 1};
+  transition: opacity 1s ease-out;
+  animation: ${isFading ? fadeOut : 'none'} 1s ease-out;
 `; 
