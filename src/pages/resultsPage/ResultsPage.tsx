@@ -76,7 +76,7 @@ const ResultsPage = () => {
 
       {result.imageUrl ? (
           <img 
-            src={`http://ec2-54-180-116-83.ap-northeast-2.compute.amazonaws.com/images/${result.imageUrl}`}
+            src={`https://54.180.116.83.nip.io/images/${result.imageUrl}`}
             alt="결과 이미지" css={S.img}
           />
             ) : (
