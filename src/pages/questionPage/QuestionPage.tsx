@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react';
-import { BackIcon } from '@assets/svgs';
 import ButtonGroup from '@pages/questionPage/buttonGroup/buttonGroup';
 import * as styles from './questionPage.style';
 import { getQuestions } from '@/apis/questions';
@@ -9,6 +8,11 @@ import Button from '@components/button/Button';
 import StepCounter from '@components/stepCounter/StepCounter';
 import { useNavigate } from 'react-router-dom';
 import usePageTransition from '@hooks/usePageTransition';
+import Back from '@components/back/Back';
+import Step1 from '@assets/svgs/Step1';
+import Step2 from '@assets/svgs/Step2';
+import Step3 from '@assets/svgs/Step3';
+import Step4 from '@assets/svgs/Step4';
 
 const QuestionPage = () => {
   const navigate = useNavigate();
@@ -43,32 +47,47 @@ const QuestionPage = () => {
     }
   };
 
-  const handleBack = () => {
+  // 이전 경로 결정
+  const getPreviousPath = () => {
     if (currentStep > 1) {
-      setCurrentStep((prev) => prev - 1);
-      setSelectedId(null);
+      return undefined; // 이전 스텝으로 이동(기본 뒤로가기)
     } else {
-      navigateWithFade('/part');
+      return '/part'; // 첫 질문이면 파트 선택 페이지로
+    }
+  };
+
+  // 현재 단계에 맞는 Step 컴포넌트 렌더링
+  const renderStepImage = () => {
+    switch (currentStep) {
+      case 1:
+        return <Step1 css={styles.testImg} />;
+      case 2:
+        return <Step2 css={styles.testImg} />;
+      case 3:
+        return <Step3 css={styles.testImg} />;
+      case 4:
+        return <Step4 css={styles.testImg} />;
+      default:
+        return <Step1 css={styles.testImg} />;
     }
   };
 
   return (
-    <div css={styles.testWrapper}>
-      <div css={styles.icon} onClick={handleBack}>
-        <BackIcon />
-      </div>
-      <StepCounter current={currentStep} total={totalSteps} />
+    <div css={styles.Wrapper(isVisible, isLeaving)}>
+      <Back previousPath={getPreviousPath()} />
+      
+      <div css={styles.topContainer}>
+        <StepCounter current={currentStep} total={totalSteps} />
 
-      <div css={styles.questionContainer}>
-       <img
-          src={question?.imageUrl ?? ''}
-          alt="질문 이미지"
-          css={styles.testImg}
-        />
-        <h1 css={styles.testText}>{question?.title ?? ''}</h1>
+        <div css={styles.questionContainer}>
+         {renderStepImage()}
+          <h1 css={styles.testText}>{question?.title ?? ''}</h1>
+        </div>
       </div>
 
-      <ButtonGroup selectedId={selectedId} setSelectedId={setSelectedId} />
+      <div css={styles.buttonGroupContainer}>
+        <ButtonGroup selectedId={selectedId} setSelectedId={setSelectedId} />
+      </div>
 
       <div css={styles.ButtonContainer}>
         <Button
