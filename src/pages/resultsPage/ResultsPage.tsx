@@ -16,7 +16,7 @@ const ResultsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const { name, selectedOptions } = useUserContext();
+  const { name, selectedOptions, token } = useUserContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,14 +24,17 @@ const ResultsPage = () => {
       try {
         setIsLoading(true);
         
-        if (selectedOptions.length === 0) {
-          console.log('선택된 옵션이 없어 등록 페이지로 리디렉션합니다.');
+        if (selectedOptions.length === 0 || !token) {
+          console.log('선택된 옵션이 없거나 토큰이 없어 등록 페이지로 리디렉션합니다.');
           setShouldRedirect(true);
           return;
         }
         
-        console.log('결과 페이지에서 API 호출 - 선택한 옵션들:', selectedOptions);
-        const data = await postResult(selectedOptions);
+        console.log('결과 페이지에서 API 호출:');
+        console.log('- 선택한 옵션들:', selectedOptions);
+        console.log('- 토큰:', token);
+        
+        const data = await postResult(selectedOptions, token);
         setResult(data);
       } catch (err) {
         setError((err as Error).message);
@@ -41,7 +44,7 @@ const ResultsPage = () => {
     };
 
     fetchResult();
-  }, [selectedOptions]);
+  }, [selectedOptions, token]);
 
   if (shouldRedirect) {
     return <Navigate to="/register" replace />;
@@ -58,8 +61,14 @@ const ResultsPage = () => {
   if (error) return <p css={S.errorText}>에러: {error}</p>;
   if (!result) return <p css={S.errorText}>결과를 불러올 수 없습니다.</p>;
   
-  const partnerNames = ['ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ','ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ'];
+  // TODO: API에서 partnerNames가 제공되면 아래 더미 데이터를 제거하고 result.partnerNames를 사용
+  // 현재는 임시 파트너 이름 배열을 사용합니다
+  const partnerNames = ['강민서', '김동욱', '김민주', '김범수', '김시연', '김윤', '김지현', '김혜수', '류효정', '박서진', '박준하', '서희수', '안현주', '유예지', '이가현'];
   
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div css={S.Wrapper}>
       <div css={S.topSection}>
@@ -82,7 +91,7 @@ const ResultsPage = () => {
           <p css={S.content}>{result.drinkDescription}</p>
         </div>
       </div>
-      <ResultBox/>
+      <ResultBox onClickShowNames={handleOpenModal} partnerCount={partnerNames.length} />
       
       <PartnerModal
         isOpen={isModalOpen}

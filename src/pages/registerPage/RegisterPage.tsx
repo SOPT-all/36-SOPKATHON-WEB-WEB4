@@ -14,7 +14,6 @@ const RegisterPage = () => {
   const [hasInputError, setHasInputError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [checkingAuth, setCheckingAuth] = useState(true);
   const navigate = useNavigate();
   const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
   const { setUserInfo, clearUserInfo, hasValidToken } = useUserContext();
@@ -30,8 +29,6 @@ const RegisterPage = () => {
         console.log('이미 인증됨, 파트 페이지로 이동합니다.');
         setShouldRedirect(true);
       }
-      
-      setCheckingAuth(false);
     };
     
     // 약간의 지연을 두고 인증 상태 확인
@@ -93,11 +90,6 @@ const RegisterPage = () => {
   useEffect(() => {
     setIsButtonEnabled(name.length > 0 && !hasInputError && !isSubmitting);
   }, [name, hasInputError, isSubmitting]);
-
-  // 인증 상태 확인 중
-  if (checkingAuth) {
-    return <div>인증 확인 중...</div>;
-  }
 
   // 이미 인증된 경우 리디렉션
   if (shouldRedirect) {

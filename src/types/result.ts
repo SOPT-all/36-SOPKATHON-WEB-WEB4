@@ -8,6 +8,7 @@ export interface AnswerResult {
     location: string;
     drinkName: string;
     drinkDescription: string;
+    partnerNames?: string[];
 }
 
 export interface AnswerResponse {

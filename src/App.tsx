@@ -37,17 +37,12 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     checkAuth();
   }, [location.pathname, hasValidToken, navigate]);
   
-  // 인증 상태 확인 중
-  if (isAuthenticated === null) {
-    return <div>인증 확인 중...</div>;
+  // 인증 실패 시 null 반환 (이미 useEffect에서 리디렉션을 처리함)
+  if (!isAuthenticated && isAuthenticated !== null) {
+    return null;
   }
   
-  // 인증 실패 시 리디렉션 (useEffect에서도 처리하지만 안전을 위해 추가)
-  if (!isAuthenticated) {
-    return null; // 이미 useEffect에서 리디렉션을 처리함
-  }
-  
-  // 인증 성공 시 자식 컴포넌트 렌더링
+  // 인증 성공 또는 확인 중이면 자식 컴포넌트 렌더링
   return <>{children}</>;
 };
 

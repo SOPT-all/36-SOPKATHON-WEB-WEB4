@@ -2,10 +2,11 @@ import { AxiosError } from 'axios';
 import api from './apiClient';
 import { AnswerResult } from '@/types/result';
 
-export const postResult = async (options: number[]): Promise<AnswerResult> => {
+export const postResult = async (options: number[], token: string): Promise<AnswerResult> => {
     try {
         const requestBody = {
             options,
+            token
         };
         
         console.log('결과 요청 body:', requestBody);
