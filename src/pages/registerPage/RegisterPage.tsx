@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as S from './registerPage.style';
 import InputField from './InputField';
-import Button from './Button';
+import Button from '@components/button/Button';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
