@@ -1,30 +1,18 @@
 const theme = {
   colors: {
-    // Black / White
-    black: '#161D24',
-    white: '#fff',
+    // 텍스트 색상
+    'text-primary': '#020202',
+    'text-sub1': '#4C4C4C',
+    'text-sub2': '#6E6E6E',
+    'text-sub3': '#AFAFAF',
+    'text-white': '#FFFFFF',
 
-    // Gray Scale
-    'gray-01': '#28323C',
-    'gray-02': '#374553',
-    'gray-03': '#646F7C',
-    'gray-04': '#C5C8CE',
-    'gray-05': '#EBE9EE',
-    'gray-06': '#F7F8F9',
-
-    // Red Scale
-    primary: '#D70011',
-    'red-01': '#F1352B',
-    'red-02': '#FFEEE8',
-
-    // Green Scale
-    'store-open': '#70DD56',
-
-    // Brown Scale
-    'brown-01': '#BF8B56',
-    'brown-02': '#D3A16D',
-    'brown-03': '#CBB793',
-    'brown-04': '#D6C6A7',
+    // 배경 색상
+    'bg-black': '#000000',
+    'bg-gray1': '#E8E8E8',
+    'bg-gray2': '#F3F3F3',
+    'bg-white': '#FFFFFF',
+    'bg-grayscale': 'rgba(0, 0, 0, 0.6)',
   },
 
   fonts: {
