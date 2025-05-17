@@ -16,7 +16,7 @@ export const ButtonDisabled = css`
 export const ButtonEnabled = css`
   width: 100%;
   height: 5.8rem;
-  background: ${theme.colors['bg-black']};
+  background: ${theme.colors['color-primary']};
   border-radius: 0.8rem;
   border: none;
   text-align: center;
