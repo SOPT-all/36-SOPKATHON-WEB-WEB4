@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import QuestionPage from '@pages/questionPage/QuestionPage';
 import RegisterPage from '@pages/registerPage/RegisterPage';
 import ResultsPage from '@pages/resultsPage/ResultsPage';
+import PartPage from '@pages/partPage/PartPage';
 import theme from '@styles/theme';
 import GlobalStyle from './styles/global';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/question" element={<QuestionPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/result" element={<ResultsPage />} />
+          <Route path="/part" element={<PartPage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
