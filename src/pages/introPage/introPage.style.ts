@@ -28,7 +28,7 @@ export const ButtonContainer = css`
   width: 100%;
   height: 5.8rem;
   position: absolute;
-  bottom: 9.6rem;
+  bottom: 2rem;
   left: 0;
   right: 0;
   padding: 0 1.8rem;

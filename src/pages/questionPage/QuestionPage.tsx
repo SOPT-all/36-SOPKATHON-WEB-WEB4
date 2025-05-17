@@ -5,9 +5,21 @@ import ButtonGroup from '@pages/questionPage/buttonGroup/buttonGroup';
 import * as styles from './questionPage.style';
 import { getQuestions } from '@/apis/questions';
 import { Question } from '@/types/question';
+import Button from '@components/button/Button';
+import StepCounter from '@components/stepCounter/StepCounter';
+import { useNavigate } from 'react-router-dom';
+import usePageTransition from '@hooks/usePageTransition';
 
 const QuestionPage = () => {
+  const navigate = useNavigate();
+  const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
   const [question, setQuestion] = useState<Question | null>(null);
+  const [currentStep, setCurrentStep] = useState<number>(1);
+  const [totalSteps, setTotalSteps] = useState<number>(5); // 전체 단계 수 설정
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const isLastStep = currentStep === totalSteps;
+  const buttonLabel = isLastStep ? '결과 보기' : '다음';
+  const isButtonEnabled = selectedId !== null;
 
   useEffect(() => {
     const fetch = async () => {
@@ -23,16 +35,28 @@ const QuestionPage = () => {
 
   const handleClick = (): void => {
     if (isLastStep) {
-      console.log('✅ 결과 보기 클릭됨')
+      console.log('✅ 결과 보기 클릭됨');
+      navigateWithFade('/results');
     } else {
-      setCurrentStep((prev) => prev + 1)
-      setSelectedId(null) // ✅ 다음 단계 진입 시 선택 초기화
+      setCurrentStep((prev) => prev + 1);
+      setSelectedId(null); // ✅ 다음 단계 진입 시 선택 초기화
     }
-  }
+  };
+
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep((prev) => prev - 1);
+      setSelectedId(null);
+    } else {
+      navigateWithFade('/part');
+    }
+  };
 
   return (
     <div css={styles.testWrapper}>
-      <BackIcon css={styles.icon} />
+      <div css={styles.icon} onClick={handleBack}>
+        <BackIcon />
+      </div>
       <StepCounter current={currentStep} total={totalSteps} />
 
       <div css={styles.questionContainer}>
