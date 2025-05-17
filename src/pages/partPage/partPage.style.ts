@@ -46,6 +46,19 @@ align-items:center;
   background-color: ${theme.colors['bg-gray2']};
   ${theme.fonts['body1-sb-16']}  
     color: ${theme.colors['text-sub2']};
+    cursor: pointer
+`;
+
+export const SelectedGrid = css`
+display: flex;
+justify-content: center;
+align-items:center;
+  width: 16.6rem;
+  height: 6.1rem;
+  background-color: ${theme.colors['color-sub2']};
+  ${theme.fonts['body1-sb-16']}  
+    color: ${theme.colors['color-primary']};
+    cursor: pointer
 `;
 
 export const ButtonContainer = css`
@@ -53,4 +66,5 @@ display:flex;
     width: 34rem;
   height: 5.8rem;
   padding-top: 6.4rem;
+  cursor: pointer;
 `;
