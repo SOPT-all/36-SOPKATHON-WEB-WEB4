@@ -6,6 +6,7 @@ import RegisterPage from '@pages/registerPage/RegisterPage';
 import theme from '@styles/theme';
 import GlobalStyle from './styles/global';
 
+
 function App() {
   return (
     <BrowserRouter>
