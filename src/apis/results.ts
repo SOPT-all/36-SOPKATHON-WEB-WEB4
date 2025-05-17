@@ -4,9 +4,13 @@ import { AnswerResult } from '@/types/result';
 
 export const postResult = async (options: number[]): Promise<AnswerResult> => {
     try {
-        const response = await api.post('/api/v1/questions/answer',{
+        const requestBody = {
             options,
-        })
+        };
+        
+        console.log('결과 요청 body:', requestBody);
+        
+        const response = await api.post('/api/v1/questions/answer', requestBody);
         return response.data.data;
     } catch (error) {
         const err = error as AxiosError<{ message: string }>;

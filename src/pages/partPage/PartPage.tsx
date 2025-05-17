@@ -9,45 +9,55 @@ import { useNavigate } from 'react-router-dom';
 import { updateUserPart } from '../../apis/users';
 import { useUserContext } from '../../contexts/UserContext';
 
-const parts = ['기획', '디자인', '웹', '안드로이드', 'IOS', '서버'];
+// 파트 정보 (표시 이름 및 enum 값)
+const PART_INFO = [
+  { displayName: '기획', enumValue: 'PLAN' },
+  { displayName: '디자인', enumValue: 'DESIGN' },
+  { displayName: '웹', enumValue: 'WEB' },
+  { displayName: '안드로이드', enumValue: 'ANDROID' },
+  { displayName: 'iOS', enumValue: 'IOS' },
+  { displayName: '서버', enumValue: 'SERVER' }
+];
 
 const PartPage = () => {
-  const [part, setPart] = useState('');
+  const [selectedPartIndex, setSelectedPartIndex] = useState<number | null>(null);
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
   const navigate = useNavigate();
   const { token, setUserInfo, name, isExistingUser } = useUserContext();
 
-  const handleSelectPart = (value: string) => {
-    if (part === value) {
-      setPart('');
-      setIsButtonEnabled(false)
+  const handleSelectPart = (index: number) => {
+    if (selectedPartIndex === index) {
+      setSelectedPartIndex(null);
     } else {
-      setPart(value);
+      setSelectedPartIndex(index);
     }
   };
 
   const handleButtonClick = async () => {
-    if (isSubmitting || !part) return;
+    if (isSubmitting || selectedPartIndex === null) return;
     
     try {
       setIsSubmitting(true);
       setIsButtonEnabled(false);
       
-      console.log('파트 선택:', part);
+      const selectedPart = PART_INFO[selectedPartIndex];
+      console.log('파트 선택:', selectedPart.displayName);
+      console.log('전송되는 enum 값:', selectedPart.enumValue);
       
       // 선택한 파트를 localStorage에 저장 (로그 출력용)
-      localStorage.setItem('selectedPart', part);
+      localStorage.setItem('selectedPart', selectedPart.displayName);
       
-      // API 호출로 파트 업데이트
-      const result = await updateUserPart(token, part);
+      // API 호출로 파트 업데이트 (enum 값 전송)
+      const result = await updateUserPart(token, selectedPart.enumValue);
       
       // 토큰 갱신
       setUserInfo(name, result.token, result.isExistingUser);
       
       console.log('파트 업데이트 성공:', {
-        part,
+        part: selectedPart.displayName,
+        enumValue: selectedPart.enumValue,
         token: result.token,
         isExistingUser: result.isExistingUser
       });
@@ -64,8 +74,8 @@ const PartPage = () => {
   };
 
   useEffect(() => {
-    setIsButtonEnabled(part !== '');
-  }, [part]);
+    setIsButtonEnabled(selectedPartIndex !== null);
+  }, [selectedPartIndex]);
 
   return (
     <div css={S.Wrapper(isVisible, isLeaving)}>
@@ -77,13 +87,13 @@ const PartPage = () => {
         />
         
         <div css={S.GridContainer}>
-          {parts.map((p) => (
+          {PART_INFO.map((part, index) => (
             <div
-              key={p}
-              css={[S.Grid, part === p && S.SelectedGrid]}
-              onClick={() => handleSelectPart(p)}
+              key={part.enumValue}
+              css={[S.Grid, selectedPartIndex === index && S.SelectedGrid]}
+              onClick={() => handleSelectPart(index)}
             >
-              {p}
+              {part.displayName}
             </div>
           ))}
         </div>
