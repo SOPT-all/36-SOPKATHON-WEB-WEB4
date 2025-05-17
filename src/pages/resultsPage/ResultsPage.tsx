@@ -8,13 +8,16 @@ import CharacterGroup from '@assets/svgs/CharacterGroup';
 import PartnerModal from '@components/modal/PartnerModal';
 import { useUserContext } from '../../contexts/UserContext';
 import LoadingSpinner from '@components/loadingSpinner/LoadingSpinner';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ResultsPage = () => {
   const [result, setResult] = useState<AnswerResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
   const { name, selectedOptions } = useUserContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchResult = async () => {
@@ -22,7 +25,8 @@ const ResultsPage = () => {
         setIsLoading(true);
         
         if (selectedOptions.length === 0) {
-          setError('선택된 옵션이 없습니다.');
+          console.log('선택된 옵션이 없어 등록 페이지로 리디렉션합니다.');
+          setShouldRedirect(true);
           return;
         }
         
@@ -38,6 +42,10 @@ const ResultsPage = () => {
 
     fetchResult();
   }, [selectedOptions]);
+
+  if (shouldRedirect) {
+    return <Navigate to="/register" replace />;
+  }
 
   if (isLoading) {
     return (
