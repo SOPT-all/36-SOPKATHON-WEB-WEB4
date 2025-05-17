@@ -1,174 +1,94 @@
 const theme = {
   colors: {
-    // Black / White
-    black: '#161D24',
-    white: '#fff',
+    // 텍스트 색상
+    'text-primary': '#020202',
+    'text-sub1': '#4C4C4C',
+    'text-sub2': '#6E6E6E',
+    'text-sub3': '#AFAFAF',
+    'text-white': '#FFFFFF',
 
-    // Gray Scale
-    'gray-01': '#28323C',
-    'gray-02': '#374553',
-    'gray-03': '#646F7C',
-    'gray-04': '#C5C8CE',
-    'gray-05': '#EBE9EE',
-    'gray-06': '#F7F8F9',
-
-    // Red Scale
-    primary: '#D70011',
-    'red-01': '#F1352B',
-    'red-02': '#FFEEE8',
-
-    // Green Scale
-    'store-open': '#70DD56',
-
-    // Brown Scale
-    'brown-01': '#BF8B56',
-    'brown-02': '#D3A16D',
-    'brown-03': '#CBB793',
-    'brown-04': '#D6C6A7',
+    // 배경 색상
+    'bg-black': '#000000',
+    'bg-gray1': '#E8E8E8',
+    'bg-gray2': '#F3F3F3',
+    'bg-white': '#FFFFFF',
+    'bg-grayscale': 'rgba(0, 0, 0, 0.6)',
+    
+    // System Colors
+    'system-press': '#0077FF',
+    'system-error': '#FF0000',
+    'system-success': '#089900',
+    
+    // Main Colors
+    'color-primary': '#FF6266',
+    'color-sub1': '#FDA68B',
+    'color-sub2': '#FEE4E3',
+    'color-point1': '#FAA844',
   },
 
   fonts: {
-    // Pretendard
-    'display-24B': {
+    // Pretendard 텍스트 스타일
+    'head-b-24': {
       fontFamily: 'Pretendard',
       fontWeight: 700,
       fontSize: '24px',
-      lineHeight: '130%',
+      lineHeight: 'Auto',
       letterSpacing: '0px',
     },
-    'display-18SB': {
+    'title1-sb-20': {
+      fontFamily: 'Pretendard',
+      fontWeight: 600,
+      fontSize: '20px',
+      lineHeight: 'Auto',
+      letterSpacing: '0px',
+    },
+    'title2-sb-18': {
       fontFamily: 'Pretendard',
       fontWeight: 600,
       fontSize: '18px',
-      lineHeight: '145%',
+      lineHeight: 'Auto',
       letterSpacing: '0px',
     },
-    'display-12M': {
+    'title2-r-18': {
       fontFamily: 'Pretendard',
-      fontWeight: 500,
-      fontSize: '12px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'heading-16B': {
-      fontFamily: 'Pretendard',
-      fontWeight: 700,
-      fontSize: '16px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'heading-14B': {
-      fontFamily: 'Pretendard',
-      fontWeight: 700,
-      fontSize: '14px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'body-14M': {
-      fontFamily: 'Pretendard',
-      fontWeight: 500,
-      fontSize: '14px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'body-14R': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '14px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'body-14R-review': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '14px',
-      lineHeight: '130%',
-      letterSpacing: '0px',
-    },
-    'body-12R': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '12px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'button-14B': {
-      fontFamily: 'Pretendard',
-      fontWeight: 700,
-      fontSize: '14px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'button-14R': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '14px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'button-12R': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '12px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'caption-12B': {
-      fontFamily: 'Pretendard',
-      fontWeight: 700,
-      fontSize: '12px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'caption-12R': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '12px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'caption-10SB': {
-      fontFamily: 'Pretendard',
-      fontWeight: 600,
-      fontSize: '10px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-    'caption-10R': {
-      fontFamily: 'Pretendard',
-      fontWeight: 400,
-      fontSize: '10px',
-      lineHeight: '145%',
-      letterSpacing: '0px',
-    },
-
-    // DAISOA
-    'number-40R': {
-      fontFamily: 'Daiso',
-      fontWeight: 400,
-      fontSize: '40px',
-      lineHeight: '40px',
-      letterSpacing: '0px',
-    },
-    'number-18R': {
-      fontFamily: 'Daiso',
       fontWeight: 400,
       fontSize: '18px',
-      lineHeight: '18px',
+      lineHeight: 'Auto',
       letterSpacing: '0px',
     },
-    'number-16R': {
-      fontFamily: 'Daiso',
+    'body1-sb-16': {
+      fontFamily: 'Pretendard',
+      fontWeight: 600,
+      fontSize: '16px',
+      lineHeight: 'Auto',
+      letterSpacing: '0px',
+    },
+    'body1-r-16': {
+      fontFamily: 'Pretendard',
       fontWeight: 400,
       fontSize: '16px',
-      lineHeight: '16px',
+      lineHeight: 'Auto',
       letterSpacing: '0px',
     },
-    'number-12R': {
-      fontFamily: 'Daiso',
+    'body2-sb-14': {
+      fontFamily: 'Pretendard',
+      fontWeight: 600,
+      fontSize: '14px',
+      lineHeight: 'Auto',
+      letterSpacing: '0px',
+    },
+    'body2-r-14': {
+      fontFamily: 'Pretendard',
       fontWeight: 400,
+      fontSize: '14px',
+      lineHeight: 'Auto',
+      letterSpacing: '0px',
+    },
+    'caption-m-12': {
+      fontFamily: 'Pretendard',
+      fontWeight: 500,
       fontSize: '12px',
-      lineHeight: '12px',
+      lineHeight: 'Auto',
       letterSpacing: '0px',
     },
   },
