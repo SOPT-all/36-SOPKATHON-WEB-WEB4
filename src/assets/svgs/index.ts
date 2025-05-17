@@ -1,1 +1,2 @@
-export { default as React } from './React';
+// @ts-nocheck
+export { default as ReactLogo } from './ReactLogo';

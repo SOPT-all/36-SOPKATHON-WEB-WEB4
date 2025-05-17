@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "svgr": "npx @svgr/cli -d src/assets/svgs --ignore-existing --typescript --no-dimensions public/svgs",
     "prepare": "husky && husky install"
   },
