@@ -12,6 +12,11 @@ export const Wrapper = css`
   height: 100%;
 `;
 
+export const title = css`
+    color: ${theme.colors['text-primary']};
+  ${theme.fonts['head-b-24']};
+`;
+
 export const container = css`
     width : 20rem;
    height : 20rem;
@@ -23,13 +28,19 @@ export const container = css`
 
 export const location = css`
   margin-bottom : 0.3rem;
+      color: ${theme.colors['text-sub2']};
+  ${theme.fonts['body1-sb-16']};
 `;
 
 export const drink = css`
   margin-bottom : 1.6rem;
+      color: ${theme.colors['text-primary']};
+  ${theme.fonts['title1-sb-20']};
 `;
 
 export const content = css`
   width : 26.7rem;
   text-align : center;
+        color: ${theme.colors['text-sub1']};
+  ${theme.fonts['body2-r-14']};
 `;
