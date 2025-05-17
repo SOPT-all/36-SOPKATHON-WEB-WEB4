@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import { buttonStyle } from './Button.style';
 
 interface ButtonProps {
@@ -10,7 +9,7 @@ interface ButtonProps {
 
 const Button = ({ label, onClick, disabled = false }: ButtonProps) => {
   return (
-    <button css={buttonStyle(disabled)} onClick={onClick} disabled={disabled}>
+    <button css={buttonStyle} onClick={onClick} disabled={disabled}>
       {label}
     </button>
   );
