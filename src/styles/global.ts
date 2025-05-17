@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Reset from './reset';
 import theme from './theme';
+import './fonts/fonts.css';
 
 const GlobalStyle = css`
   ${Reset}
@@ -16,6 +17,9 @@ const GlobalStyle = css`
     min-height: 100vh;
     background-color: ${theme.colors['bg-white']};
     font-size: 62.5%;
+    font-family: 'Pretendard', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   #root {
