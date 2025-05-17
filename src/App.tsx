@@ -5,7 +5,7 @@ import QuestionPage from '@pages/questionPage/QuestionPage';
 import RegisterPage from '@pages/registerPage/RegisterPage';
 import ResultsPage from '@pages/resultsPage/ResultsPage';
 import SplashPage from '@pages/splashPage/SplashPage';
-import IntroPage from '@pages/introPage/IntroPage';
+import IntroPage from '@pages/introPage/introPage';
 
 import PartPage from '@pages/partPage/PartPage';
 import theme from '@styles/theme';
