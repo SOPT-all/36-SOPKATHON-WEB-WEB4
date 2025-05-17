@@ -1,18 +1,25 @@
-import { useState } from 'react'
-import { BackIcon } from '@assets/svgs'
-import ButtonGroup from './buttonGroup/buttonGroup'
-import * as styles from './questionPage.style'
-import StepCounter from '@components/stepCounter/StepCounter'
-import Button from '@components/button/Button'
+/** @jsxImportSource @emotion/react */
+import { useEffect, useState } from 'react';
+import { BackIcon } from '@assets/svgs';
+import ButtonGroup from '@pages/questionPage/buttonGroup/buttonGroup';
+import * as styles from './questionPage.style';
+import { getQuestions } from '@/apis/questions';
+import { Question } from '@/types/question';
 
 const QuestionPage = () => {
-  const totalSteps = 4
-  const [currentStep, setCurrentStep] = useState<number>(1)
-  const [selectedId, setSelectedId] = useState<number | null>(null)
+  const [question, setQuestion] = useState<Question | null>(null);
 
-  const isLastStep = currentStep === totalSteps
-  const buttonLabel = isLastStep ? '결과 보기' : '다음'
-  const isButtonEnabled = selectedId !== null // ✅ 선택된 버튼이 있을 때만 활성화
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const data = await getQuestions();
+        setQuestion(data[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetch();
+  }, []);
 
   const handleClick = (): void => {
     if (isLastStep) {
@@ -29,8 +36,12 @@ const QuestionPage = () => {
       <StepCounter current={currentStep} total={totalSteps} />
 
       <div css={styles.questionContainer}>
-        <img src="/logo.png" alt="테스트 이미지" css={styles.testImg} />
-        <h1 css={styles.testText}>가장 끌리는 풍경이 있나요?</h1>
+       <img
+          src={question?.imageUrl ?? ''}
+          alt="질문 이미지"
+          css={styles.testImg}
+        />
+        <h1 css={styles.testText}>{question?.title ?? ''}</h1>
       </div>
 
       <ButtonGroup selectedId={selectedId} setSelectedId={setSelectedId} />
@@ -41,7 +52,7 @@ const QuestionPage = () => {
         isEnabled={isButtonEnabled}
       />
     </div>
-  )
-}
+  );
+};
 
-export default QuestionPage
+export default QuestionPage;

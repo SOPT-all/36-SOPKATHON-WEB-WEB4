@@ -31,3 +31,4 @@ dist-ssr
 .pnp.loader.mjs
 
 .cursor
+.env

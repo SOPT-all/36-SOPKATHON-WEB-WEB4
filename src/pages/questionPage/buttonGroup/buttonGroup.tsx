@@ -1,30 +1,37 @@
-import TestAnswerButton from '@components/testAnswerButton/testAnswerButton'
-import * as styles from "./buttonGroup.css"
+import { useEffect, useState } from 'react';
+import TestAnswerButton from '@components/testAnswerButton/testAnswerButton';
+import * as styles from './buttonGroup.css';
+import { getQuestions } from '@/apis/questions';
+import { Option } from '@/types/question';
 
-const options = [
-  { id: 1, text: '시원한 해변·호숫가' },
-  { id: 2, text: '푸른 숲·산속 풍경' },
-]
+const ButtonGroup = () => {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [options, setOptions] = useState<Option[]>([]);
 
-interface ButtonGroupPropTypes {
-  selectedId: number | null;
-  setSelectedId: (id: number | null) => void;
-}
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const data = await getQuestions();
+        setOptions(data[0].options); // 첫 번째 질문만 사용
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetch();
+  }, []);
 
-const ButtonGroup = ({ selectedId, setSelectedId }: ButtonGroupPropTypes) => {
   return (
     <div css={styles.buttonGroup}>
-      {options.map(({ id, text }) => (
+      {options.map(({ id, description }) => (
         <TestAnswerButton
           key={id}
-          text={text}
+          text={description}
           selected={selectedId === id}
           onClick={() => setSelectedId(id)}
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ButtonGroup
-
+export default ButtonGroup;
