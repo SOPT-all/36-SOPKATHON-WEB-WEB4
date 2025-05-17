@@ -7,6 +7,7 @@ import ResultsPage from '@pages/resultsPage/ResultsPage';
 import SplashPage from '@pages/splashPage/SplashPage';
 import IntroPage from '@pages/introPage/IntroPage';
 
+import PartPage from '@pages/partPage/PartPage';
 import theme from '@styles/theme';
 import GlobalStyle from './styles/global';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/question" element={<QuestionPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/result" element={<ResultsPage />} />
+          <Route path="/part" element={<PartPage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
