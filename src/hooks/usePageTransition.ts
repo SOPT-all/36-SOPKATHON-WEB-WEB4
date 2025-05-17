@@ -21,7 +21,16 @@ const usePageTransition = () => {
     }, 400); // 애니메이션 시간보다 약간 짧게 설정
   };
 
-  return { isVisible, isLeaving, navigateWithFade };
+  // 단계 전환용 페이드 애니메이션 트리거 함수
+  const triggerFadeTransition = (callback: () => void, duration = 400) => {
+    setIsLeaving(true);
+    setTimeout(() => {
+      callback();
+      setIsLeaving(false);
+    }, duration);
+  };
+
+  return { isVisible, isLeaving, navigateWithFade, triggerFadeTransition };
 };
 
 export default usePageTransition; 

@@ -34,12 +34,6 @@ export const questionContainer = css`
     margin-top: 2rem;
 `;
 
-export const headerBtn = css`
-    display: flex;
-    align-self: flex-start;
-    margin-bottom: 2.4rem;
-`;
-
 export const testImg = css`
     width: 12rem;
     height: 12rem;

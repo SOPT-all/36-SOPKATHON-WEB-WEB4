@@ -14,11 +14,9 @@ import Step2 from '@assets/svgs/Step2';
 import Step3 from '@assets/svgs/Step3';
 import Step4 from '@assets/svgs/Step4';
 
-const totalSteps: number = 4;
-
 const QuestionPage = () => {
   const navigate = useNavigate();
-  const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
+  const { isVisible, isLeaving, navigateWithFade, triggerFadeTransition } = usePageTransition();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -54,8 +52,11 @@ const QuestionPage = () => {
       console.log('✅ 결과 보기 클릭됨');
       navigateWithFade('/results');
     } else {
-      setCurrentStep((prev) => prev + 1);
-      setSelectedId(null); // ✅ 다음 단계 진입 시 선택 초기화
+      // 다음 질문으로 넘어갈 때 페이드 트랜지션 적용
+      triggerFadeTransition(() => {
+        setCurrentStep(prev => prev + 1);
+        setSelectedId(null); // ✅ 다음 단계 진입 시 선택 초기화
+      });
     }
   };
 
