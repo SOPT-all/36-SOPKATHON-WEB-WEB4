@@ -36,9 +36,9 @@ const QuestionPage = () => {
       <ButtonGroup selectedId={selectedId} setSelectedId={setSelectedId} />
 
       <Button
-        label={buttonLabel}
+        text={buttonLabel}
         onClick={handleClick}
-        disabled={!isButtonEnabled}
+        isEnabled={isButtonEnabled}
       />
     </div>
   )

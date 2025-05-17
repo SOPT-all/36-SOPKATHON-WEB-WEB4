@@ -1,5 +1,4 @@
 import TestAnswerButton from '@components/testAnswerButton/testAnswerButton'
-import { useState } from 'react'
 import * as styles from "./buttonGroup.css"
 
 const options = [
@@ -7,9 +6,12 @@ const options = [
   { id: 2, text: '푸른 숲·산속 풍경' },
 ]
 
-const ButtonGroup = () => {
-  const [selectedId, setSelectedId] = useState<number | null>(null)
+interface ButtonGroupPropTypes {
+  selectedId: number | null;
+  setSelectedId: (id: number | null) => void;
+}
 
+const ButtonGroup = ({ selectedId, setSelectedId }: ButtonGroupPropTypes) => {
   return (
     <div css={styles.buttonGroup}>
       {options.map(({ id, text }) => (
