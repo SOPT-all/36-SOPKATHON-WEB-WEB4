@@ -9,6 +9,7 @@ import StepCounter from '@components/stepCounter/StepCounter';
 import { useNavigate } from 'react-router-dom';
 import usePageTransition from '@hooks/usePageTransition';
 import Back from '@components/back/Back';
+import LoadingSpinner from '@components/loadingSpinner/LoadingSpinner';
 import Step1 from '@assets/svgs/Step1';
 import Step2 from '@assets/svgs/Step2';
 import Step3 from '@assets/svgs/Step3';
@@ -86,7 +87,11 @@ const QuestionPage = () => {
   };
 
   if (loading) {
-    return <div css={styles.Wrapper(isVisible, isLeaving)}>질문을 불러오는 중...</div>;
+    return (
+      <div css={styles.Wrapper(isVisible, isLeaving)}>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (
