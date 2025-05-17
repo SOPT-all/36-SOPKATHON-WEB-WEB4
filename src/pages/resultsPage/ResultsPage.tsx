@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import * as S from './resultsPage.style';
+import ResultBox from '@components/resultBox/resultBox';
 import { useEffect, useState } from 'react';
 import { postResult } from '@/apis/results';
 import { AnswerResult } from '@/types/result';
@@ -52,6 +53,7 @@ const ResultsPage = () => {
           <p css={S.content}>{result.drinkDescription}</p>
         </div>
       </div>
+      <ResultBox/>
       
       <PartnerModal
         isOpen={isModalOpen}
