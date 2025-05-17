@@ -14,7 +14,7 @@ const GlobalStyle = css`
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background-color: ${theme.colors.white};
+    background-color: ${theme.colors['bg-white']};
     font-size: 62.5%;
   }
 
