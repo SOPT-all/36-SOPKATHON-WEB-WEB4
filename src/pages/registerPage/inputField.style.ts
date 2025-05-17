@@ -23,6 +23,9 @@ export const InputWrapper = css`
   border-radius: 0.8rem;
   outline: 0.1rem ${theme.colors['bg-gray1']} solid;
   outline-offset: -0.1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
 `;
 
 export const Input = css`
@@ -36,6 +39,17 @@ export const Input = css`
 
   &::placeholder {
     color: ${theme.colors['text-sub3']};
-    text-align: center;
+    text-align: left;
   }
+`;
+
+export const IconWrapper = css`
+  position: absolute;
+  right: 1.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `; 

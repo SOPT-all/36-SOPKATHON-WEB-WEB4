@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as S from './inputField.style';
+import XIcon from '../../assets/svgs/XIcon';
 
 interface InputFieldPropTypes {
   label: string;
@@ -24,6 +25,10 @@ const InputField = ({
     }
   };
 
+  const handleClearInput = () => {
+    onChange('');
+  };
+
   return (
     <div css={S.InputContainer}>
       <div css={S.InputLabel}>{label}</div>
@@ -36,6 +41,11 @@ const InputField = ({
           placeholder={placeholder}
           maxLength={maxLength}
         />
+        {value && (
+          <div css={S.IconWrapper} onClick={handleClearInput}>
+            <XIcon />
+          </div>
+        )}
       </div>
     </div>
   );
