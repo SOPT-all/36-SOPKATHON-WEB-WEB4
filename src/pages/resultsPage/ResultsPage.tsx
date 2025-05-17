@@ -5,7 +5,6 @@ import { postResult } from '@/apis/results';
 import { AnswerResult } from '@/types/result';
 import CharacterGroup from '@assets/svgs/CharacterGroup';
 import PartnerModal from '@components/modal/PartnerModal';
-import Button from '@components/button/Button';
 
 const ResultsPage = () => {
     const [result, setResult] = useState<AnswerResult | null>(null);
@@ -37,8 +36,11 @@ const ResultsPage = () => {
         <p css={S.title}>{result.userName}님의 먹을 지도는?</p>
       </div>
 
-      {result.imageUrl ? (
-          <img src={result.imageUrl} alt="질문 이미지" css={S.img}/>
+      {`http://ec2-54-180-116-83.ap-northeast-2.compute.amazonaws.com/images/${result.imageUrl}` ? (
+          <img 
+            src={`http://ec2-54-180-116-83.ap-northeast-2.compute.amazonaws.com/images/${result.imageUrl}`}
+            alt="질문 이미지" css={S.img}
+          />
             ) : (
               <CharacterGroup css={S.img} />
       )}
