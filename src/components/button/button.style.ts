@@ -1,10 +1,11 @@
 import { css } from '@emotion/react';
+import theme from '@styles/theme';
 
 export const buttonStyle = (disabled: boolean) => css`
-  width: 21.1875rem;
-  height: 3.625rem;
-  border-radius: .5rem;
-  font-size: 1.125rem;
+  width: 3.39rem
+  height: 5.8rem
+  border-radius: .8rem
+  font-size: 1.8rem;
   font-weight: 600;
   border: none;
   cursor: ${disabled ? 'not-allowed' : 'pointer'};
