@@ -16,7 +16,7 @@ const ResultsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const { name, selectedOptions } = useUserContext();
+  const { name, selectedOptions, token } = useUserContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,14 +24,17 @@ const ResultsPage = () => {
       try {
         setIsLoading(true);
         
-        if (selectedOptions.length === 0) {
-          console.log('선택된 옵션이 없어 등록 페이지로 리디렉션합니다.');
+        if (selectedOptions.length === 0 || !token) {
+          console.log('선택된 옵션이 없거나 토큰이 없어 등록 페이지로 리디렉션합니다.');
           setShouldRedirect(true);
           return;
         }
         
-        console.log('결과 페이지에서 API 호출 - 선택한 옵션들:', selectedOptions);
-        const data = await postResult(selectedOptions);
+        console.log('결과 페이지에서 API 호출:');
+        console.log('- 선택한 옵션들:', selectedOptions);
+        console.log('- 토큰:', token);
+        
+        const data = await postResult(selectedOptions, token);
         setResult(data);
       } catch (err) {
         setError((err as Error).message);
@@ -41,7 +44,7 @@ const ResultsPage = () => {
     };
 
     fetchResult();
-  }, [selectedOptions]);
+  }, [selectedOptions, token]);
 
   if (shouldRedirect) {
     return <Navigate to="/register" replace />;
