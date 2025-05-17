@@ -6,6 +6,7 @@ interface InputFieldPropTypes {
   label: string;
   value: string;
   onChange: (value: string) => void;
+  onErrorChange?: (hasError: boolean) => void;
   placeholder: string;
   maxLength: number;
   isNameField?: boolean;
@@ -15,6 +16,7 @@ const InputField = ({
   label, 
   value, 
   onChange, 
+  onErrorChange,
   placeholder, 
   maxLength,
   isNameField = false
@@ -27,11 +29,13 @@ const InputField = ({
       // 숫자나 특수문자 검사 (한글, 영문만 허용)
       const hasInvalidChar = /[0-9\!\@\#\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\;\:\'\"\,\.\/\<\>\?]/.test(value);
       setHasError(hasInvalidChar);
+      onErrorChange?.(hasInvalidChar);
       console.log('입력값:', value, '유효하지 않은 문자 포함:', hasInvalidChar);
     } else {
       setHasError(false);
+      onErrorChange?.(false);
     }
-  }, [value, isNameField]);
+  }, [value, isNameField, onErrorChange]);
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;

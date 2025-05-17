@@ -1,18 +1,21 @@
-/** @jsxImportSource @emotion/react */
-import { buttonStyle } from './Button.style';
+import * as S from './button.style';
 
-interface ButtonProps {
-  label: string;
+interface ButtonPropTypes {
+  text: string;
+  isEnabled: boolean;
   onClick?: () => void;
-  disabled?: boolean;
 }
 
-const Button = ({ label, onClick, disabled = false }: ButtonProps) => {
+const Button = ({ text, isEnabled, onClick }: ButtonPropTypes) => {
   return (
-    <button css={buttonStyle} onClick={onClick} disabled={disabled}>
-      {label}
+    <button 
+      css={isEnabled ? S.ButtonEnabled : S.ButtonDisabled}
+      disabled={!isEnabled}
+      onClick={onClick}
+    >
+      {text}
     </button>
   );
 };
 
-export default Button;
+export default Button; 
