@@ -34,6 +34,7 @@ const RegisterPage = () => {
           onChange={handleNameChange}
           placeholder="최대 4글자로 입력해주세요"
           maxLength={4}
+          isNameField={true}
         />
       </div>
       

@@ -13,6 +13,17 @@ const theme = {
     'bg-gray2': '#F3F3F3',
     'bg-white': '#FFFFFF',
     'bg-grayscale': 'rgba(0, 0, 0, 0.6)',
+    
+    // System Colors
+    'system-press': '#0077FF',
+    'system-error': '#FF0000',
+    'system-success': '#089900',
+    
+    // Main Colors
+    'color-primary': '#FF6266',
+    'color-sub1': '#FDA68B',
+    'color-sub2': '#FEE4E3',
+    'color-point1': '#FAA844',
   },
 
   fonts: {

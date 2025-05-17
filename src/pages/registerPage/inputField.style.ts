@@ -15,17 +15,24 @@ export const InputLabel = css`
   word-wrap: break-word;
 `;
 
-export const InputWrapper = css`
+export const InputWrapper = (isFocused: boolean, hasError: boolean) => css`
   width: 100%;
   height: 5.7rem;
   background: ${theme.colors['bg-white']};
   overflow: hidden;
   border-radius: 0.8rem;
-  outline: 0.1rem ${theme.colors['bg-gray1']} solid;
+  outline: 0.1rem ${
+    hasError 
+      ? theme.colors['system-error'] 
+      : isFocused 
+        ? theme.colors['system-press'] 
+        : theme.colors['bg-gray1']
+  } solid;
   outline-offset: -0.1rem;
   position: relative;
   display: flex;
   align-items: center;
+  transition: outline-color 0.2s ease;
 `;
 
 export const Input = css`
@@ -52,4 +59,10 @@ export const IconWrapper = css`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const ErrorMessage = css`
+  color: ${theme.colors['system-error']};
+  ${theme.fonts['caption-m-12']}
+  margin-top: 0.4rem;
 `; 
