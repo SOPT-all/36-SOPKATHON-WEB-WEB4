@@ -6,4 +6,5 @@ export const buttonGroup = css`
     flex-direction: column;
     gap: 0.8rem;
     padding: 0 1.8rem;
+    margin-bottom: 4rem;
 `;

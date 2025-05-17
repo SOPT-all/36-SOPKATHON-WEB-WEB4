@@ -6,6 +6,7 @@ export const testWrapper = css`
     flex-direction: column;
     gap: 0.8rem;
     padding: 1.8rem;
+    align-items: center;
 `;
 
 export const icon = css`

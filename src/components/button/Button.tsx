@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { buttonStyle } from './Button.style';
+import { buttonStyle } from './button.style';
 
 interface ButtonProps {
   label: string;
