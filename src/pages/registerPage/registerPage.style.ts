@@ -82,5 +82,9 @@ export const Input = css`
 export const ButtonContainer = css`
   width: 100%;
   height: 5.8rem;
-  padding-top: 19.4rem;
+  position: absolute;
+  bottom: 9.6rem;
+  left: 0;
+  right: 0;
+  padding: 0 1.6rem;
 `;
