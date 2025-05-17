@@ -7,6 +7,7 @@ export const InputContainer = css`
   flex-direction: column;
   align-items: flex-start;
   gap: 0.8rem;
+  position: relative;
 `;
 
 export const InputLabel = css`
@@ -64,5 +65,8 @@ export const IconWrapper = css`
 export const ErrorMessage = css`
   color: ${theme.colors['system-error']};
   ${theme.fonts['caption-m-12']}
-  margin-top: 0.4rem;
+  position: absolute;
+  top: calc(0.8rem + 2.4rem + 5.7rem); /* InputLabel의 높이 + gap + InputWrapper의 높이 */
+  left: 0;
+  z-index: 1;
 `; 

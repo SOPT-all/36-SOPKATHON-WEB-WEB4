@@ -72,9 +72,9 @@ const InputField = ({
           </div>
         )}
       </div>
-      {hasError && isNameField && (
-        <div css={S.ErrorMessage}>이름에는 한글과 영문만 입력 가능합니다.</div>
-      )}
+      <div css={S.ErrorMessage} style={{ visibility: hasError && isNameField ? 'visible' : 'hidden' }}>
+        이름에는 한글과 영문만 입력 가능합니다.
+      </div>
     </div>
   );
 };

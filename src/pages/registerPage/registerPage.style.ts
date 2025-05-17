@@ -25,7 +25,6 @@ export const Title = css`
 `;
 
 export const SubTitle = css`
-
   color: ${theme.colors['text-sub2']};
   ${theme.fonts['body2-r-14']}
   word-wrap: break-word;
@@ -46,6 +45,7 @@ export const InputFieldContainer = css`
   align-items: flex-start;
   gap: 0.8rem;
   padding-top: 5rem;
+  position: relative;
 `;
 
 export const InputLabel = css`
