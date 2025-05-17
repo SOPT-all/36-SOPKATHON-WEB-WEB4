@@ -4,22 +4,17 @@ import TitleContainer from '@components/titleContainer/TitleContainer';
 import CharacterGroup from '@assets/svgs/CharacterGroup';
 import Button from '@components/button/Button';
 import { useEffect, useState } from 'react';
+import usePageTransition from '@hooks/usePageTransition';
 
 const IntroPage = () => {
-  const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // 컴포넌트가 마운트된 후 즉시 화면에 표시
-    setIsVisible(true);
-  }, []);
+  const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
 
   const handleStartButtonClick = () => {
-    navigate('/register');
+    navigateWithFade('/register');
   };
 
   return (
-    <div css={S.Wrapper}>
+    <div css={S.Wrapper(isVisible, isLeaving)}>
       <div css={S.ContentWrapper}>
         <TitleContainer 
           title="환영합니다!"

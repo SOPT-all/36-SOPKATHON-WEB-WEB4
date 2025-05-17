@@ -4,12 +4,16 @@ import * as S from './partPage.style';
 import Back from '@components/back/Back';
 import Button from '@components/button/Button';
 import TitleContainer from '@components/titleContainer/TitleContainer';
+import usePageTransition from '@hooks/usePageTransition';
+import { useNavigate } from 'react-router-dom';
 
 const parts = ['기획', '디자인', '웹', '안드로이드', 'IOS', '서버'];
 
 const PartPage = () => {
   const [part, setPart] = useState('');
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
+  const navigate = useNavigate();
 
   const handleSelectPart = (value: string) => {
     if (part === value) {
@@ -22,6 +26,8 @@ const PartPage = () => {
 
   const handleButtonClick = () => {
     console.log('파트 선택:', part);
+    // 파트 선택 후 질문 페이지로 이동
+    navigateWithFade('/question');
   };
 
   useEffect(() => {
@@ -29,8 +35,8 @@ const PartPage = () => {
   }, [part]);
 
   return (
-    <div css={S.Wrapper}>
-      <Back />
+    <div css={S.Wrapper(isVisible, isLeaving)}>
+      <Back previousPath="/register" />
       <div css={S.TitleContainer}>
         <TitleContainer 
           title="파트를 선택해주세요" 
