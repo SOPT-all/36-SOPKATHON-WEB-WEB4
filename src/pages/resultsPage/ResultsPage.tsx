@@ -1,12 +1,16 @@
+/** @jsxImportSource @emotion/react */
 import * as S from './resultsPage.style';
 import { useEffect, useState } from 'react';
 import { postResult } from '@/apis/results';
 import { AnswerResult } from '@/types/result';
 import CharacterGroup from '@assets/svgs/CharacterGroup';
+import PartnerModal from '@components/modal/PartnerModal';
+import Button from '@components/button/Button';
 
 const ResultsPage = () => {
     const [result, setResult] = useState<AnswerResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const options = [5, 7, 9, 11]; 
 
@@ -26,6 +30,7 @@ const ResultsPage = () => {
   if (error) return <p>에러: {error}</p>;
   if (!result) return <p>결과 불러오는 중...</p>;
   
+  const partnerNames = ['ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ','ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ', 'ㅇㅇㅇ'];
   return (
     <div css={S.Wrapper}>
       <div css={S.topSection}>
@@ -46,8 +51,13 @@ const ResultsPage = () => {
         </div>
       </div>
       
+      <PartnerModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        names={partnerNames}
+      />
     </div>
   );
 };
 
-export default ResultsPage; 
+export default ResultsPage;
