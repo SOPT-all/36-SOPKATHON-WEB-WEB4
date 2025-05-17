@@ -1,23 +1,51 @@
-import { css } from '@emotion/react';
 import * as S from './resultsPage.style';
+import { useEffect, useState } from 'react';
+import { postResult } from '@/apis/results';
+import { AnswerResult } from '@/types/result';
+import CharacterGroup from '@assets/svgs/CharacterGroup';
 
 const ResultsPage = () => {
+    const [result, setResult] = useState<AnswerResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const options = [5, 7, 9, 11]; 
+
+  useEffect(() => {
+    const fetchResult = async () => {
+      try {
+        const data = await postResult(options);
+        setResult(data);
+      } catch (err) {
+        setError((err as Error).message);
+      }
+    };
+
+    fetchResult();
+  }, []);
+
+  if (error) return <p>에러: {error}</p>;
+  if (!result) return <p>결과 불러오는 중...</p>;
+  
   return (
     <div css={S.Wrapper}>
       <div css={S.topSection}>
-        <p css={S.title}>_님의 먹을 지도는?</p>
+        <p css={S.title}>{result.userName}님의 먹을 지도는?</p>
       </div>
-      
+
+      {result.imageUrl ? (
+          <img src={result.imageUrl} alt="질문 이미지" css={S.img}/>
+            ) : (
+              <CharacterGroup css={S.img} />
+      )}
+
       <div css={S.bottomSection}>
         <div css={S.infoContainer}>
-          <p css={S.location}>창원시</p>
-          <p css={S.drink}>맑은 내일 벚꽃주</p>
-          <p css={S.content}>봄이 되면 떠오르는 벚꽃의 색감과 향을 담은 달콤한 술, 청주 스타일, 진해군항제 기념주</p>
-        </div>
-        <div css={S.resultBox}>
-          <p>결과 설명</p>
+          <p css={S.location}>{result.location}</p>
+          <p css={S.drink}>{result.drinkName}</p>
+          <p css={S.content}>{result.drinkDescription}</p>
         </div>
       </div>
+      
     </div>
   );
 };

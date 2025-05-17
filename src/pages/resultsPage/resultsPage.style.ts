@@ -4,10 +4,9 @@ import theme from '@styles/theme';
 export const Wrapper = css`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: ${theme.colors['bg-gray2']};
 `;
 
@@ -17,6 +16,7 @@ export const topSection = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 `;
 
 export const bottomSection = css`
@@ -24,7 +24,8 @@ export const bottomSection = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
+  margin-top: 2.8rem;
 `;
 
 export const title = css`
@@ -67,17 +68,7 @@ export const content = css`
   ${theme.fonts['body2-r-14']};
 `;
 
-export const resultBox = css`
-  display: flex;
-  width: 339px;
-  height: 160px;
-  padding: 20px 32px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  border: 1px solid ${theme.colors['color-sub1']};
-  background: ${theme.colors['bg-white']};
-  margin-bottom: 2rem;
-`;
+export const img = css`
+  width: 20rem;
+  height: 20rem;
+`

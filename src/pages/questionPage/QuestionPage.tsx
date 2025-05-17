@@ -14,6 +14,8 @@ import Step2 from '@assets/svgs/Step2';
 import Step3 from '@assets/svgs/Step3';
 import Step4 from '@assets/svgs/Step4';
 
+const totalSteps: number = 4;
+
 const QuestionPage = () => {
   const navigate = useNavigate();
   const { isVisible, isLeaving, navigateWithFade } = usePageTransition();
