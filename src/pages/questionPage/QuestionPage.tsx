@@ -70,11 +70,13 @@ const QuestionPage = () => {
 
       <ButtonGroup selectedId={selectedId} setSelectedId={setSelectedId} />
 
-      <Button
-        text={buttonLabel}
-        onClick={handleClick}
-        isEnabled={isButtonEnabled}
-      />
+      <div css={styles.ButtonContainer}>
+        <Button
+          text={buttonLabel}
+          onClick={handleClick}
+          isEnabled={isButtonEnabled}
+        />
+      </div>
     </div>
   );
 };

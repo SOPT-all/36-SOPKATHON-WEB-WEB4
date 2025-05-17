@@ -7,6 +7,9 @@ export const testWrapper = css`
     gap: 0.8rem;
     padding: 1.8rem;
     align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
 `;
 
 export const icon = css`
@@ -21,7 +24,6 @@ export const questionContainer = css`
     gap: 3.2rem;
     padding: 0 1.8rem;
     align-items: center;
-    margin-bottom: 11.4rem;
     margin-top: 2rem;
 `;
 
@@ -32,4 +34,14 @@ export const testImg = css`
 
 export const testText = css`
     ${theme.fonts['title1-sb-20']}
+`;
+
+export const ButtonContainer = css`
+  width: 100%;
+  height: 5.8rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  padding: 0 1.8rem;
 `;
