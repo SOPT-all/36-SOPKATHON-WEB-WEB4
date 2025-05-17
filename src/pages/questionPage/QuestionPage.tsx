@@ -14,15 +14,18 @@ import Step1 from '@assets/svgs/Step1';
 import Step2 from '@assets/svgs/Step2';
 import Step3 from '@assets/svgs/Step3';
 import Step4 from '@assets/svgs/Step4';
+import { useUserContext } from '../../contexts/UserContext';
 
 const QuestionPage = () => {
   const navigate = useNavigate();
   const { isVisible, isLeaving, navigateWithFade, triggerFadeTransition } = usePageTransition();
+  const { name, token } = useUserContext();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [totalSteps, setTotalSteps] = useState<number>(4); // 전체 단계 수 설정(Step1~Step4)
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const isLastStep = currentStep === totalSteps;
   const buttonLabel = isLastStep ? '결과 보기' : '다음';
   const isButtonEnabled = selectedId !== null;
@@ -49,8 +52,20 @@ const QuestionPage = () => {
   }, []);
 
   const handleClick = (): void => {
+    if (selectedId === null) return;
+    
+    // 현재 선택된 옵션 저장
+    const updatedOptions = [...selectedOptions];
+    updatedOptions[currentStep - 1] = selectedId;
+    setSelectedOptions(updatedOptions);
+    
     if (isLastStep) {
-      console.log('✅ 결과 보기 클릭됨');
+      console.log('✅ 선택 완료 정보:');
+      console.log('이름:', name);
+      console.log('토큰:', token);
+      console.log('선택한 옵션들:', updatedOptions);
+      console.log('파트:', localStorage.getItem('selectedPart') || '선택된 파트 없음');
+      
       navigateWithFade('/results');
     } else {
       // 다음 질문으로 넘어갈 때 페이드 트랜지션 적용
